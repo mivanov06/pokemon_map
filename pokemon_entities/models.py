@@ -8,9 +8,9 @@ class Pokemon(models.Model):
                                            verbose_name='Из кого эволюционировал', default=None,
                                            related_name='next_evolution')
     title_ru = models.CharField(max_length=200, verbose_name='Название русское', default='')
-    title_en = models.CharField(max_length=200, verbose_name='Название английское', default='')
-    title_jp = models.CharField(max_length=200, verbose_name='Название японское', default='')
-    description = models.TextField(max_length=1500, verbose_name='Описание', default='')
+    title_en = models.CharField(max_length=200, verbose_name='Название английское', blank=True, default='')
+    title_jp = models.CharField(max_length=200, verbose_name='Название японское', blank=True, default='')
+    description = models.TextField(max_length=1500, verbose_name='Описание', blank=True, default='')
     image = models.ImageField(upload_to='images', verbose_name='Изображение', blank=True, null=True)
 
     class Meta:
@@ -22,7 +22,7 @@ class Pokemon(models.Model):
 
 
 class PokemonEntity(models.Model):
-    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, default=1)
+    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, default=1, verbose_name='Покемон')
     latitude = models.FloatField(verbose_name='Широта')
     longitude = models.FloatField(verbose_name='Долгота')
     appeared_at = models.DateTimeField(verbose_name='Время появления', default=datetime.now())
