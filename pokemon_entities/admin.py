@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Pokemon
+from .models import Pokemon, PokemonEntity
 
 
 class PokemonAdmin(admin.ModelAdmin):
@@ -8,3 +8,4 @@ class PokemonAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Pokemon, PokemonAdmin)
+admin.site.register(PokemonEntity)

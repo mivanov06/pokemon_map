@@ -11,3 +11,12 @@ class Pokemon(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class PokemonEntity(models.Model):
+    latitude = models.FloatField(verbose_name='Широта')
+    longitude = models.FloatField(verbose_name='Долгота')
+
+    class Meta:
+        verbose_name = 'Координаты покемона'
+        verbose_name_plural = 'Координаты покемонов'
