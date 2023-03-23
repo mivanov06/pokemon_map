@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models  # noqa F401
 
 
@@ -17,6 +19,8 @@ class PokemonEntity(models.Model):
     pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, default=1)
     latitude = models.FloatField(verbose_name='Широта')
     longitude = models.FloatField(verbose_name='Долгота')
+    appeared_at = models.DateTimeField(verbose_name='Время появления', default=datetime.now())
+    disappeared_at = models.DateTimeField(verbose_name='Время исчезновения', default=datetime.now())
 
     class Meta:
         verbose_name = 'Координаты покемона'
