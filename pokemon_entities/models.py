@@ -6,8 +6,8 @@ class Pokemon(models.Model):
                                            verbose_name='Из кого эволюционировал',
                                            related_name='next_evolutions')
     title_ru = models.CharField(max_length=200, verbose_name='Название русское', blank=True)
-    title_en = models.CharField(max_length=200, verbose_name='Название английское', blank=True)
-    title_jp = models.CharField(max_length=200, verbose_name='Название японское', blank=True)
+    title_en = models.CharField(max_length=200, verbose_name='Название английское', blank=True, null=True)
+    title_jp = models.CharField(max_length=200, verbose_name='Название японское', blank=True, null=True)
     description = models.TextField(max_length=1500, verbose_name='Описание', blank=True)
     image = models.ImageField(upload_to='images', verbose_name='Изображение', blank=True, null=True)
 
