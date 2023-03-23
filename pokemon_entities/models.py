@@ -30,3 +30,6 @@ class PokemonEntity(models.Model):
     class Meta:
         verbose_name = 'Координаты покемона'
         verbose_name_plural = 'Координаты покемонов'
+
+    def __str__(self):
+        return self.pokemon.title

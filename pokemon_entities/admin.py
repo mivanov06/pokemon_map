@@ -7,5 +7,9 @@ class PokemonAdmin(admin.ModelAdmin):
     list_display = ('title',)
 
 
+class PokemonEntityAdmin(admin.ModelAdmin):
+    list_display = ('pokemon', 'latitude', 'longitude', 'level')
+
+
 admin.site.register(Pokemon, PokemonAdmin)
-admin.site.register(PokemonEntity)
+admin.site.register(PokemonEntity, PokemonEntityAdmin)
