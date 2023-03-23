@@ -4,7 +4,10 @@ from django.db import models  # noqa F401
 
 
 class Pokemon(models.Model):
-    title = models.CharField(max_length=200, verbose_name='Название')
+    title_ru = models.CharField(max_length=200, verbose_name='Название русское', default='')
+    title_en = models.CharField(max_length=200, verbose_name='Название английское', default='')
+    title_jp = models.CharField(max_length=200, verbose_name='Название японское', default='')
+    description = models.TextField(max_length=1500, verbose_name='Описание', default='')
     image = models.ImageField(upload_to='images', verbose_name='Изображение', blank=True, null=True)
 
     class Meta:
@@ -12,7 +15,7 @@ class Pokemon(models.Model):
         verbose_name_plural = 'Покемоны'
 
     def __str__(self):
-        return self.title
+        return self.title_ru
 
 
 class PokemonEntity(models.Model):
@@ -32,4 +35,4 @@ class PokemonEntity(models.Model):
         verbose_name_plural = 'Координаты покемонов'
 
     def __str__(self):
-        return self.pokemon.title
+        return self.pokemon.title_ru

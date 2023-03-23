@@ -4,7 +4,7 @@ from .models import Pokemon, PokemonEntity
 
 
 class PokemonAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title_ru',)
 
 
 class PokemonEntityAdmin(admin.ModelAdmin):
