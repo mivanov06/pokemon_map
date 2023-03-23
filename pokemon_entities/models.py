@@ -4,9 +4,9 @@ from django.db import models  # noqa F401
 
 
 class Pokemon(models.Model):
-    previous_evolution = models.ForeignKey('Pokemon', on_delete=models.CASCADE, blank=True, null=True,
-                                           verbose_name='Из кого эволюционировал', default=None,
-                                           related_name='next_evolution')
+    previous_evolution = models.ForeignKey('Pokemon', on_delete=models.SET_NULL, blank=True, null=True,
+                                           verbose_name='Из кого эволюционировал',
+                                           related_name='next_evolutions')
     title_ru = models.CharField(max_length=200, verbose_name='Название русское', default='')
     title_en = models.CharField(max_length=200, verbose_name='Название английское', blank=True, default='')
     title_jp = models.CharField(max_length=200, verbose_name='Название японское', blank=True, default='')
@@ -22,7 +22,7 @@ class Pokemon(models.Model):
 
 
 class PokemonEntity(models.Model):
-    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, default=1, verbose_name='Покемон')
+    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, verbose_name='Покемон', related_name='entities')
     latitude = models.FloatField(verbose_name='Широта')
     longitude = models.FloatField(verbose_name='Долгота')
     appeared_at = models.DateTimeField(verbose_name='Время появления', default=datetime.now())
