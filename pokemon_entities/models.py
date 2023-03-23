@@ -4,6 +4,9 @@ from django.db import models  # noqa F401
 
 
 class Pokemon(models.Model):
+    previous_evolution = models.ForeignKey('Pokemon', on_delete=models.CASCADE, blank=True, null=True,
+                                           verbose_name='Из кого эволюционировал', default=None,
+                                           related_name='next_evolution')
     title_ru = models.CharField(max_length=200, verbose_name='Название русское', default='')
     title_en = models.CharField(max_length=200, verbose_name='Название английское', default='')
     title_jp = models.CharField(max_length=200, verbose_name='Название японское', default='')
